@@ -46,7 +46,7 @@ const StorageServiceMock = {
   },
 };
 
-fdescribe('ManageProductsComponent', () => {
+describe('ManageProductsComponent', () => {
   let component: ManageProductsComponent;
   let fixture: ComponentFixture<ManageProductsComponent>;
   let productsService: ProductsService;
@@ -106,7 +106,7 @@ fdescribe('ManageProductsComponent', () => {
     expect(component.products()[0].title).toEqual('teste');
   });
 
-  it('deve retornar a lista completa de produtos qunado o texto de pesquisa for vazio ao chamar onSearchText', () => {
+  it('deve retornar a lista completa de produtos quando o texto de pesquisa for vazio ao chamar onSearchText', () => {
     const searchText = 'teste';
     component.onSearchText(searchText);
 
@@ -115,7 +115,7 @@ fdescribe('ManageProductsComponent', () => {
     expect(component.products()[0].title).toEqual('teste');
   });
 
-  it('teste', (done: DoneFn) => {
+  it('deve retornar a lista completa de produtos quando chamar o método onEdit', (done: DoneFn) => {
     spyOn(window, 'confirm').and.returnValue(true);
     component.onEdit(produtos[0]);
     component.dialogRef.close();
