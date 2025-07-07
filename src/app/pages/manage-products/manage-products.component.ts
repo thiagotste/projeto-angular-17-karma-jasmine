@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ProductsService } from '../../shared/services/products/products.service';
 import { Product } from '../../types/product.inteface';
@@ -13,6 +13,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 export class ManageProductsComponent {
 
   products = this.productsService.fetchAllProductsCreated();
+  public dialogRef!: MatDialogRef<CreateProductComponent>;
 
   constructor(
     private dialog: MatDialog,
@@ -20,9 +21,9 @@ export class ManageProductsComponent {
   ) {}
 
   onSubscribeProduct(): void {
-    const dialogRef = this.dialog.open(CreateProductComponent);
+    this.dialogRef = this.dialog.open(CreateProductComponent);
 
-    dialogRef.afterClosed().subscribe(result =>
+    this.dialogRef.afterClosed().subscribe(result =>
       this.products.update(this.productsService.fetchAllProductsCreated())
     );
   }
@@ -49,9 +50,9 @@ export class ManageProductsComponent {
   }
 
   onEdit(product: Product | null): void {
-    const dialogRef = this.dialog.open(CreateProductComponent, {data: product});
+    this.dialogRef = this.dialog.open(CreateProductComponent, {data: product});
 
-    dialogRef.afterClosed().subscribe(result =>
+    this.dialogRef.afterClosed().subscribe(result =>
       this.products.update(this.productsService.fetchAllProductsCreated())
     );
   }

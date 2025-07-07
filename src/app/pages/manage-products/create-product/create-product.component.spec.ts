@@ -97,7 +97,6 @@ describe('CreateProductComponent', () => {
       `women's clothing`,
     ];
     component.categories$.subscribe((resultado) => {
-      console.log(resultado);
       expect(categorias).toEqual(resultado);
       done();
     });
