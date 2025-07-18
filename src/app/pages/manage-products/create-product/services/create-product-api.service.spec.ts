@@ -7,14 +7,14 @@ import {
 import { environment } from '../../../../../environments/environment';
 import { Product } from '../../../../types/product.inteface';
 
-fdescribe('CreateProductApiService', () => {
+describe('CreateProductApiService', () => {
   let service: CreateProductApiService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [CreateProductApiService],
+      providers: [CreateProductApiService, CreateProductApiService],
     });
 
     service = TestBed.inject(CreateProductApiService);
